@@ -9,3 +9,13 @@ body{
   display: flex;
   padding: 25px 20px;
 }
+.CartIcon{
+  color: white;
+}
+.CartIcon:hover {
+  cursor: pointer;
+}
+.cartWrapper {
+  position: absolute;
+  background-color: yellow;
+}

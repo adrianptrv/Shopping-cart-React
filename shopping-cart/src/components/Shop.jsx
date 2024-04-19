@@ -17,7 +17,7 @@ function Shop({ handleAdding, products }) {
                 <p>{product.description}</p>
                 <h3>{product.price}</h3>
                 <p>{product.id}</p>
-                <button onClick={() => handleAdding(i)}>Add to cart</button>
+                <button onClick={() => handleAdding(i, product.id)}>Add to cart</button>
                 </div>)}
             <div>
 

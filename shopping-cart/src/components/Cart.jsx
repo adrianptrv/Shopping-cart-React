@@ -2,29 +2,19 @@ import { useState, useEffect } from 'react'
 
 
 
-function Cart() {
-
-    let arr1;
-    const [products, SetProducts] = useState()
-
-  useEffect(() => {
-  fetch('https://fakestoreapi.com/products/category/electronics')
-            .then((response)=>response.json())
-            .then((data) => {
-            SetProducts(data)
-            })
-
-  }, [])
-
-//   arr1 = products.map((product) =>  <div>{product.title}</div>)
+function Cart({addedItems}) {
 
   return (
    <>
-<h1>
-    CART PAGE
- 
-</h1>
-{products && products.map((product) =>  <div>{product.title}</div>)}
+{Array.from(addedItems).map((product, i) => <div key={i}> <h1>{product.title}</h1>
+              <img src={product.image} width={100} height={100}></img>
+              <p>{product.description}</p>
+              <h3>{product.price}</h3>
+              <p>{product.quantity}</p>
+              <button onClick={() => handleQuantity(i, "add")}>Add</button>
+              <button onClick={() => handleQuantity(i, "sub")}>Substract</button>
+              <button onClick={() => handleRemove(i)}>Remove</button>
+            </div>)}
    </>
   )
 }

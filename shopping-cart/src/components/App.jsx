@@ -37,7 +37,7 @@ function App() {
 
 
   // We receive the array position and product ID of the clicked item. 
-  const handleAdd = (clickNum, productID) => {
+  const handleAdd = (clickNum, productID, quanNum) => {
     // Then we check if this product id is already in the array, if it is, we increase it's quantity.
     let x = addedItems.findIndex(e => e.id === productID)
     if (x > -1) {
@@ -47,7 +47,7 @@ function App() {
       //Finding the object element in the current array and increase it's quantity
       // curArr[x].quantity += 1
       // SetAddedItems(curArr)
-      handleQuantity(x)
+      handleQuantity(x, 'add')
     }
 
     // If it's not we add it to the array
@@ -55,17 +55,31 @@ function App() {
       // newArr.push(products[clickNum])
       // newArr[clickNum].quantity = 1
       let newEle = products[clickNum];
-      newEle.quantity = 1;
+      newEle.quantity = quanNum;
       //Writing the current array + adding the new object
       let newObj = [...addedItems, newEle]
       SetAddedItems(newObj)
     }
   }
 
-const handleQuantity = (id) => {
-const curArr = [...addedItems]
-curArr[id].quantity += 1
-SetAddedItems(curArr)
+const handleQuantity = (id, act) => {
+  const curArr = [...addedItems]
+  if(act === "add"){
+    curArr[id].quantity += 1
+  }
+  else if (act === "sub"){
+    curArr[id].quantity -= 1
+    if (curArr[id].quantity == 0){
+      curArr.splice([id], 1)
+    }
+  }
+    SetAddedItems(curArr)
+}
+
+const handleRemove = (id) => {
+  const curArr = [...addedItems];
+  curArr.splice([id], 1);
+  SetAddedItems(curArr);
 }
 
   return (
@@ -84,8 +98,9 @@ SetAddedItems(curArr)
               <p>{product.description}</p>
               <h3>{product.price}</h3>
               <p>{product.quantity}</p>
-              <button onClick={() => handleQuantity(i)}>Add</button>
-              <button onClick={() => handleQuantity(i)}>Remove</button>
+              <button onClick={() => handleQuantity(i, "add")}>Add</button>
+              <button onClick={() => handleQuantity(i, "sub")}>Substract</button>
+              <button onClick={() => handleRemove(i)}>Remove</button>
             </div>)}
             <button onClick={handleAdd}>Checkout</button>
             <button onClick={handleCart}><Link to="cart">View Cart</Link></button>
@@ -98,7 +113,7 @@ SetAddedItems(curArr)
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart addedItems={addedItems} />} />
         </Routes>
       </div>
 

@@ -41,20 +41,15 @@ function App() {
     // Then we check if this product id is already in the array, if it is, we increase it's quantity.
     let x = addedItems.findIndex(e => e.id === productID)
     if (x > -1) {
-      // newArr[x].quantity += 1
-
-      // const curArr = [...addedItems]
-      //Finding the object element in the current array and increase it's quantity
-      // curArr[x].quantity += 1
-      // SetAddedItems(curArr)
-      handleQuantity(x, 'add')
+      // Calls quantity change function, 
+      handleQuantity(x, 'add', quanNum)
     }
 
     // If it's not we add it to the array
     else {
-      // newArr.push(products[clickNum])
-      // newArr[clickNum].quantity = 1
+      //Selecting the current product element
       let newEle = products[clickNum];
+      //Setting the quantity of the element
       newEle.quantity = quanNum;
       //Writing the current array + adding the new object
       let newObj = [...addedItems, newEle]
@@ -62,13 +57,23 @@ function App() {
     }
   }
 
-const handleQuantity = (id, act) => {
+const handleQuantity = (id, act, quanNum) => {
   const curArr = [...addedItems]
+  //Checks if we should add or substract from the quantity number
   if(act === "add"){
-    curArr[id].quantity += 1
+    //If there is writen number in the quantity input field, sets it to the quantity number
+    if(quanNum){
+      curArr[id].quantity += quanNum
+    }
+    //Plus one quantity (used for the increase button in the cart)
+    else{
+      curArr[id].quantity += 1
+    }
   }
+  //Substract uqantity
   else if (act === "sub"){
     curArr[id].quantity -= 1
+    //Checks if quantity is 0, then removes the whole product from the cart
     if (curArr[id].quantity == 0){
       curArr.splice([id], 1)
     }
@@ -76,6 +81,7 @@ const handleQuantity = (id, act) => {
     SetAddedItems(curArr)
 }
 
+//Function for removing the product from the car, by the remove button
 const handleRemove = (id) => {
   const curArr = [...addedItems];
   curArr.splice([id], 1);

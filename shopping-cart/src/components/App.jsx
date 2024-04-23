@@ -6,6 +6,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Home from './Home.jsx'
 import Shop from './Shop.jsx'
 import Cart from './Cart.jsx'
+import IndividualProduct from "./IndividualProduct.jsx"
 
 // const newArr = []
 
@@ -88,6 +89,9 @@ const handleRemove = (id) => {
   SetAddedItems(curArr);
 }
 
+let product64 = products
+console.log(products)
+
   return (
     <>
       {/* Header */}
@@ -95,8 +99,8 @@ const handleRemove = (id) => {
         <img src={reactImg}></img>
         <div>
           <Link to="/">Home</Link>
-          <Link to="shop">Shop</Link>
-          <Link to="cart">Cart</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/cart">Cart</Link>
           <p className='CartIcon' onClick={handleCart}>CART ICON</p>
           {cartModal ? <div className='cartWrapper'>
             {addedItems.map((product, i) => <div key={i}> <h1>{product.title}</h1>
@@ -119,7 +123,16 @@ const handleRemove = (id) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} />} />
-          <Route path="/cart" element={<Cart addedItems={addedItems} />} />
+          <Route path="/cart" element={<Cart handleQuan={handleQuantity} handleRem={handleRemove} addedItems={addedItems} />} />
+         { products && <>
+         <Route path="/shop/wd-2tb" element={<IndividualProduct handleAdding={handleAdd} products={products[0]} id={0} />} />
+         <Route path="/shop/ssd-1tb" element={<IndividualProduct handleAdding={handleAdd} products={products[1]} id={1} />} />
+         <Route path="/shop/ssd-256gb" element={<IndividualProduct handleAdding={handleAdd} products={products[2]} id={2} />} />
+         <Route path="/shop/wd-4tb" element={<IndividualProduct handleAdding={handleAdd} products={products[3]} id={3} />} />
+         <Route path="/shop/acer-21.5inch" element={<IndividualProduct handleAdding={handleAdd} products={products[4]} id={4} />} />
+         <Route path="/shop/Samsung-49inch" element={<IndividualProduct handleAdding={handleAdd} products={products[5]} id={5} />} />
+         </>
+         }
         </Routes>
       </div>
 

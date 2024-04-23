@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 
 
-function Cart({addedItems}) {
+function Cart({handleQuan, handleRem, addedItems}) {
 
   return (
    <>
@@ -11,9 +11,9 @@ function Cart({addedItems}) {
               <p>{product.description}</p>
               <h3>{product.price}</h3>
               <p>{product.quantity}</p>
-              <button onClick={() => handleQuantity(i, "add")}>Add</button>
-              <button onClick={() => handleQuantity(i, "sub")}>Substract</button>
-              <button onClick={() => handleRemove(i)}>Remove</button>
+              <button onClick={() => handleQuan(i, "add")}>Add</button>
+              <button onClick={() => handleQuan(i, "sub")}>Substract</button>
+              <button onClick={() => handleRem(i)}>Remove</button>
             </div>)}
    </>
   )

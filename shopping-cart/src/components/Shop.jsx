@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-
-
 function Shop({ handleAdding, products }) {
 
 //Quantity variable

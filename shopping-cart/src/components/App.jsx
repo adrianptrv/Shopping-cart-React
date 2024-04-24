@@ -42,7 +42,7 @@ function App() {
     // Then we check if this product id is already in the array, if it is, we increase it's quantity.
     let x = addedItems.findIndex(e => e.id === productID)
     if (x > -1) {
-      // Calls quantity change function, 
+      // Calls quantity change function, with the product array position in "addedItems; The action we want to make - "add" or "sub"; And the quantity Number"
       handleQuantity(x, 'add', quanNum)
     }
 
@@ -89,8 +89,6 @@ const handleRemove = (id) => {
   SetAddedItems(curArr);
 }
 
-let product64 = products
-console.log(products)
 
   return (
     <>
@@ -98,22 +96,30 @@ console.log(products)
       <div className='header'>
         <img src={reactImg}></img>
         <div>
+          {/* Links to the three main pages + cart Icon */}
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/cart">Cart</Link>
           <p className='CartIcon' onClick={handleCart}>CART ICON</p>
+          {/* Cart code. 
+              1st - We check if the cart should be showing or not.
+              2nd - If it's set to enabled we map the array with the added items - "addedItems" so we can show them in the cart div  */}
           {cartModal ? <div className='cartWrapper'>
             {addedItems.map((product, i) => <div key={i}> <h1>{product.title}</h1>
               <img src={product.image} width={100} height={100}></img>
               <p>{product.description}</p>
-              <h3>{product.price}</h3>
+              <h3>${product.price}</h3>
               <p>{product.quantity}</p>
+              {/* Buttons for increasing and decreasing the quantity of the added to cart products. The are calling the "handleQuantity function with the specific action, "add" or "sub" */}
               <button onClick={() => handleQuantity(i, "add")}>Add</button>
               <button onClick={() => handleQuantity(i, "sub")}>Substract</button>
+              {/* Button for removing the specific product from the cart with the product index position in the "addedItems" array */}
               <button onClick={() => handleRemove(i)}>Remove</button>
             </div>)}
-            <button onClick={handleAdd}>Checkout</button>
-            <button onClick={handleCart}><Link to="cart">View Cart</Link></button>
+            {/* Checkout button *FOR FUTURE UPDATES* */}
+            <button>Proceed to Checkout</button>
+            {/* Link for the cart page where is user can see his whole cart on the page. */}
+            <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
           </div> : <></>}
         </div>
       </div>
@@ -121,10 +127,17 @@ console.log(products)
       {/* Page content */}
       <div>
         <Routes>
+          {/* Adding the three main pages */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} />} />
           <Route path="/cart" element={<Cart handleQuan={handleQuantity} handleRem={handleRemove} addedItems={addedItems} />} />
-         { products && <>
+          {/* Adding individual pages for the products. 
+              1st - We check if the products variable has the results of the fetching
+              2nd - We write the Route component for every product. 
+               - We are sending the function for adding product to the Cart - "handleAdd" as a callback.
+               - Only the specific product information, based on their place in the result array - "products"
+               - And the id/position of the product in the result array - "products"*/}
+         {products && <>
          <Route path="/shop/wd-2tb" element={<IndividualProduct handleAdding={handleAdd} products={products[0]} id={0} />} />
          <Route path="/shop/ssd-1tb" element={<IndividualProduct handleAdding={handleAdd} products={products[1]} id={1} />} />
          <Route path="/shop/ssd-256gb" element={<IndividualProduct handleAdding={handleAdd} products={products[2]} id={2} />} />

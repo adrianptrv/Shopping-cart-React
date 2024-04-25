@@ -17,6 +17,9 @@ function App() {
   // Added to cart variable
   const [addedItems, SetAddedItems] = useState([])
 
+  // Variable for the total price of the items
+  const [totalPrice, SetTotalPrice] = useState(0)
+
   // Change modal change variable
   const [cartModal, SetCartModal] = useState(false)
 
@@ -38,14 +41,13 @@ function App() {
 
 
   // We receive the array position and product ID of the clicked item. 
-  const handleAdd = (clickNum, productID, quanNum) => {
+  const handleAdd = (clickNum, productID, quanNum, price) => {
     // Then we check if this product id is already in the array, if it is, we increase it's quantity.
     let x = addedItems.findIndex(e => e.id === productID)
     if (x > -1) {
       // Calls quantity change function, with the product array position in "addedItems; The action we want to make - "add" or "sub"; And the quantity Number"
       handleQuantity(x, 'add', quanNum)
     }
-
     // If it's not we add it to the array
     else {
       //Selecting the current product element
@@ -56,6 +58,8 @@ function App() {
       let newObj = [...addedItems, newEle]
       SetAddedItems(newObj)
     }
+    let num = totalPrice + (quanNum * price)
+    SetTotalPrice(num)
   }
 
 const handleQuantity = (id, act, quanNum) => {
@@ -82,11 +86,14 @@ const handleQuantity = (id, act, quanNum) => {
     SetAddedItems(curArr)
 }
 
-//Function for removing the product from the car, by the remove button
-const handleRemove = (id) => {
+//Function for removing the product from the cart, by the remove button. Also substract the value of the items (qunatity * price) from the total bill.
+const handleRemove = (id, quantity, price) => {
   const curArr = [...addedItems];
   curArr.splice([id], 1);
   SetAddedItems(curArr);
+  
+  let new2 = totalPrice - (quantity * price);
+  SetTotalPrice(new2)
 }
 
 
@@ -114,12 +121,14 @@ const handleRemove = (id) => {
               <button onClick={() => handleQuantity(i, "add")}>Add</button>
               <button onClick={() => handleQuantity(i, "sub")}>Substract</button>
               {/* Button for removing the specific product from the cart with the product index position in the "addedItems" array */}
-              <button onClick={() => handleRemove(i)}>Remove</button>
+              <button onClick={() => handleRemove(i, product.quantity, product.price)}>Remove</button>
             </div>)}
             {/* Checkout button *FOR FUTURE UPDATES* */}
             <button>Proceed to Checkout</button>
             {/* Link for the cart page where is user can see his whole cart on the page. */}
             <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
+            <br></br>
+            <h2>${totalPrice}</h2>
           </div> : <></>}
         </div>
       </div>

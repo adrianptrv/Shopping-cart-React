@@ -13,7 +13,13 @@ const handleChange = (e, i, act) => {
     num1[i] += parseInt(1)
   }
   else if (act === "sub"){
-    num1[i] -= parseInt(1)
+    // Check is the number in the input field is 1, do nothing. So we don't have a negative number of items added.
+    if (num1[i] == 1){
+      return;
+    }
+    else{
+      num1[i] -= parseInt(1)
+    }
   }
   else{
     num1[i] = parseInt(e.target.value)
@@ -36,7 +42,7 @@ const handleChange = (e, i, act) => {
                 <input type='number' min={1} value={num[i]} onChange={(e) => {handleChange(e, i)}}></input>
                  <button onClick={() => {handleChange(null, i, "add")}}>Plus</button>
                  <button onClick={() => {handleChange(null, i, "sub")}}>Minus</button>
-                <button onClick={() => handleAdding(i, product.id, num[i])}>Add to cart</button>
+                <button onClick={() => handleAdding(i, product.id, num[i], product.price)}>Add to cart</button>
                 </div>)}
             <div>
 

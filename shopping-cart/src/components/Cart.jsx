@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Cart({ handleQuan, handleRem, addedItems }) {
+function Cart({ handleQuan, handleRem, addedItems, totalCartPrice, pageObj }) {
 
   return (
     <>
@@ -13,10 +13,12 @@ function Cart({ handleQuan, handleRem, addedItems }) {
         <p>{product.description}</p>
         <h3>${product.price}</h3>
         <p>{product.quantity}</p>
-        <button onClick={() => handleQuan(i, "add")}>Add</button>
-        <button onClick={() => handleQuan(i, "sub")}>Substract</button>
+        <button><Link to={pageObj[product.id]}>Go to page</Link></button>
+        <button onClick={() => handleQuan(i, "add", product.price)}>Add</button>
+        <button onClick={() => handleQuan(i, "sub", product.price)}>Substract</button>
         <button onClick={() => handleRem(i, product.quantity, product.price)}>Remove</button>
       </div>)}
+      <h2>${totalCartPrice}</h2>
       <button>Proceed to Checkout</button>
       <button><Link to="/shop">Back to Shop</Link></button>
     </>

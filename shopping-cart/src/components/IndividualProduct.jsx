@@ -33,12 +33,12 @@ const handleChange = (e, i, act) => {
             {products && <div key={id}> <h1>{products.title}</h1>
                 <img src={products.image} width={100} height={100}></img>
                 <p>{products.description}</p>
-                <h3>{products.price}</h3>
+                <h3>${products.price}</h3>
                 <p>{products.id}</p>
                 <input type='number' min={1} value={num[id]} onChange={(e) => {handleChange(e, id)}}></input>
                 <button onClick={() => {handleChange(null, id, "add")}}>Plus</button>
                 <button onClick={() => {handleChange(null, id, "sub")}}>Minus</button>
-                <button onClick={() => handleAdding(id, products.id, num[id])}>Add to cart</button>
+                <button onClick={() => handleAdding(id, products.id, num[id], products.price)}>Add to cart</button>
                 <button><Link to="/shop">Back to Shop</Link></button>
                 <button><Link to="/cart">To Cart</Link></button>
                 </div>}

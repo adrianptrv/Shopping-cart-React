@@ -1,0 +1,24 @@
+
+.productWrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 10%;
+    justify-items: center;
+    .productBox {
+        width: 65%;
+        border: 1px solid;
+        text-align: center;
+    
+        h1 {
+            font-size: 22px;
+        }
+        h3{
+            font-size: 23px;
+        margin: 0 0 10px 0;
+        font-weight: 500;
+        color: gray;
+        }
+    }
+}

@@ -125,9 +125,9 @@ function App() {
         <img className='headerLogo' src={reactImg}></img>
         <div className='linkPlusCart'>
           {/* Links to the three main pages + cart Icon */}
-          <a className='linkHome'><Link to="/">Home</Link></a>
-          <a className='linkShop'><Link to="/shop">Shop</Link></a>
-          <a className='linkCart'><Link to="/cart">Cart</Link></a>
+          <Link className='linkHome' to="/">Home</Link>
+          <Link className='linkShop' to="/shop">Shop</Link>
+          <Link className='linkCart' to="/cart">Cart</Link>
           <p className='cartIcon' onClick={handleCart}><FontAwesomeIcon icon={faCartShopping}/></p>
           {/* Cart code. 
               1st - We check if the cart should be showing or not.

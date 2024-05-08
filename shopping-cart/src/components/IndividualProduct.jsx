@@ -13,7 +13,12 @@ const handleChange = (e, i, act) => {
     num1[i] += parseInt(1)
   }
   else if (act === "sub"){
-    num1[i] -= parseInt(1)
+    if (num1[i] == 1) {
+      return;
+    }
+    else {
+      num1[i] -= parseInt(1)
+    }
   }
   else{
     num1[i] = parseInt(e.target.value)

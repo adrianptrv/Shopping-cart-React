@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import "../styles/Shop.scss"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+
 // Getting the callback for adding products to cart, and the porducts arry
 function Shop({ handleAdding, products }) {
 
@@ -38,11 +41,14 @@ function Shop({ handleAdding, products }) {
           {/* <p>{product.description}</p> */}
           <h3>${product.price}</h3>
           {/* <p>{product.id}</p> */}
-          <button onClick={() => { handleChange(null, i, "add") }}>Plus</button>
+          <div>
+          <div className='quanWrap'>
+          <button className='btnQuan' onClick={() => { handleChange(null, i, "sub") }}><FontAwesomeIcon icon={faMinus} /></button>
           <input type='number' min={1} value={num[i]} onChange={(e) => { handleChange(e, i) }}></input>
-          <button onClick={() => { handleChange(null, i, "sub") }}>Minus</button>
-          <br></br>
-          <button onClick={() => handleAdding(i, product.id, num[i], product.price)}>Add to cart</button>
+          <button className='btnQuan' onClick={() => { handleChange(null, i, "add") }}><FontAwesomeIcon icon={faPlus} /></button>
+          </div>
+          <button className='btnAdd' onClick={() => handleAdding(i, product.id, num[i], product.price)}>Add to cart</button>
+          </div>
         </div>)}
       </div>
       <div>

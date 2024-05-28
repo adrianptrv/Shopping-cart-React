@@ -14,8 +14,7 @@ import "../styles/App.scss"
 
 //Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-
+import { faPlus, faMinus, faTrashCan, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   // Variable for holding the fetched products
@@ -35,7 +34,7 @@ function App() {
     9: "/shop/wd-2tb",
     10: "/shop/ssd-1tb",
     11: "/shop/ssd-256gb",
-    12: "/shop/wd-4tb", 
+    12: "/shop/wd-4tb",
     13: "/shop/acer-21.5inch",
     14: "/shop/Samsung-49inch"
   }
@@ -128,22 +127,25 @@ function App() {
           <Link className='linkHome' to="/">Home</Link>
           <Link className='linkShop' to="/shop">Shop</Link>
           <Link className='linkCart' to="/cart">Cart</Link>
-          <p className='cartIcon' onClick={handleCart}><FontAwesomeIcon icon={faCartShopping}/></p>
+          <p className='cartIcon' onClick={handleCart}><FontAwesomeIcon icon={faCartShopping} /></p>
           {/* Cart code. 
               1st - We check if the cart should be showing or not.
               2nd - If it's set to enabled we map the array with the added items - "addedItems" so we can show them in the cart div  */}
           {cartModal ? <div className='cartWrapper'>
-            {addedItems.map((product, i) => <div key={i}> <h1>{product.title}</h1>
-              <img src={product.image} width={100} height={100}></img>
-              <p>{product.description}</p>
-              <h3>${product.price}</h3>
-              <p>{product.quantity}</p>
-              <button><Link to={pageObj[product.id]}>Go to page</Link></button>
-              {/* Buttons for increasing and decreasing the quantity of the added to cart products. The are calling the "handleQuantity function with the specific action, "add" or "sub" */}
-              <button onClick={() => handleQuantity(i, "add", product.price)}>Add</button>
-              <button onClick={() => handleQuantity(i, "sub", product.price)}>Substract</button>
-              {/* Button for removing the specific product from the cart with the product index position in the "addedItems" array */}
-              <button onClick={() => handleRemove(i, product.quantity, product.price)}>Remove</button>
+            {addedItems.map((product, i) => <div className='item-entry' key={i}> <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
+              <h3>{product.title}</h3>
+              {/* <p>{product.description}</p> */}
+              <div className='price-quan-block'>
+                <h3>${product.price}</h3>
+                <div className='quan-block'>
+                  {/* Buttons for increasing and decreasing the quantity of the added to cart products. The are calling the "handleQuantity function with the specific action, "add" or "sub" */}
+                  <button onClick={() => handleQuantity(i, "sub", product.price)}><FontAwesomeIcon icon={faMinus} /></button>
+                  <p>{product.quantity}</p>
+                  <button onClick={() => handleQuantity(i, "add", product.price)}><FontAwesomeIcon icon={faPlus} /></button>
+                  {/* Button for removing the specific product from the cart with the product index position in the "addedItems" array */}
+                  <button onClick={() => handleRemove(i, product.quantity, product.price)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                </div>
+              </div>
             </div>)}
             {/* Checkout button *FOR FUTURE UPDATES* */}
             <button>Proceed to Checkout</button>

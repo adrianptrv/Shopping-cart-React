@@ -47,8 +47,47 @@ body {
         .cartWrapper {
             position: absolute;
             background-color: yellow;
+            width: 35%;
             top: 150px;
+
+            .item-entry {
+                display: flex;
+
+                h3{
+                    width: 45%;
+                }
+                .price-quan-block {
+                    display: flex;
+                    margin: auto;
+
+                    .quan-block {
+                        display: flex;
+                        p {
+                            border-radius: 25px;
+                            text-align: center;
+                            width: 33px;
+                            height: 33px;
+                            border: 1px solid gray;
+                            font-size: 20px;
+                            line-height: 32px;
+                        }
+            
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            font-size: 20px;
+                            width: 30px;
+            
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
+    
 
     }
 }

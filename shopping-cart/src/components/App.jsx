@@ -131,12 +131,12 @@ function App() {
           {/* Cart code. 
               1st - We check if the cart should be showing or not.
               2nd - If it's set to enabled we map the array with the added items - "addedItems" so we can show them in the cart div  */}
-          {cartModal ? <div className='cartWrapper'>
+          {cartModal ? <div className='cartWrapper'> <p className='dropArrow'></p>
             {addedItems.map((product, i) => <div className='item-entry' key={i}> <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
               <h3>{product.title}</h3>
               {/* <p>{product.description}</p> */}
               <div className='price-quan-block'>
-                <h3>${product.price}</h3>
+                <h2>${product.price}</h2>
                 <div className='quan-block'>
                   {/* Buttons for increasing and decreasing the quantity of the added to cart products. The are calling the "handleQuantity function with the specific action, "add" or "sub" */}
                   <button onClick={() => handleQuantity(i, "sub", product.price)}><FontAwesomeIcon icon={faMinus} /></button>
@@ -147,12 +147,15 @@ function App() {
                 </div>
               </div>
             </div>)}
+            <div className='totalAndButtons'>
+            <h2>Total: ${totalPrice}</h2>
+            <div className='buttons'>
             {/* Checkout button *FOR FUTURE UPDATES* */}
-            <button>Proceed to Checkout</button>
+            <button>Checkout</button>
             {/* Link for the cart page where is user can see his whole cart on the page. */}
             <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
-            <br></br>
-            <h2>${totalPrice}</h2>
+            </div>
+            </div>
           </div> : <></>}
         </div>
       </div>

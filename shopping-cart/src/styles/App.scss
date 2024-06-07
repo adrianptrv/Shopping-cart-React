@@ -52,6 +52,11 @@ body {
             width: 35%;
             top: 110px;
             right: 4.7%;
+            border-radius: 10px;
+            border-top-right-radius: 0;
+            padding-top: 5px;
+
+            box-shadow: -12px 12px 8px rgba(0, 0, 0, .12), 0 8px 8px rgba(0, 0, 0, .12), 0 4px 4px rgba(0, 0, 0, .12), -8px 8px 8px rgba(0, 0, 0, .12), -16px 16px 10px rgba(0, 0, 0, .12);
             
             .dropArrow {
                 width: 0;
@@ -68,7 +73,7 @@ body {
                 display: flex;
 
                 // Item bottom border
-                background-size: 90% 2px;
+                background-size: 93% 2px;
                 background-position: bottom center;
                 background-repeat: no-repeat;
                 background-image: linear-gradient(grey, grey);
@@ -80,7 +85,7 @@ body {
 
                 a {
                     img {
-                        margin: 15px 0 15px 15px;
+                        margin: 15px 0 15px 23px;
                     }
                 }
 
@@ -94,6 +99,7 @@ body {
                         overflow: hidden;
                         margin: 23px 15px 0 0;
                         margin-left: -17px;
+                        color: #515050;
                     }
 
                     .quan-block {

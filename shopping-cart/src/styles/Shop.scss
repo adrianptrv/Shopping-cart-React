@@ -13,12 +13,14 @@
     .productBox {
 
         width: 75%;
-        border: 1px solid;
         text-align: center;
-
+        background-color: #ededed;
+        padding: 20px 0px;
+        border-radius: 15px;
 
         h1 {
             font-size: 22px;
+            padding: 0px 16px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -29,8 +31,7 @@
         h3 {
             font-size: 23px;
             margin: 0 0 10px 0;
-            font-weight: 500;
-            color: gray;
+            color: #757575;
         }
 
 

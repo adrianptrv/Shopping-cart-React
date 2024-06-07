@@ -132,7 +132,8 @@ function App() {
               1st - We check if the cart should be showing or not.
               2nd - If it's set to enabled we map the array with the added items - "addedItems" so we can show them in the cart div  */}
           {cartModal ? <div className='cartWrapper'> <p className='dropArrow'></p>
-            {addedItems.map((product, i) => <div className='item-entry' key={i}> <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
+            {addedItems.map((product, i) => <div className='item-entry' key={i}>
+              <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
               <h3>{product.title}</h3>
               {/* <p>{product.description}</p> */}
               <div className='price-quan-block'>
@@ -148,13 +149,13 @@ function App() {
               </div>
             </div>)}
             <div className='totalAndButtons'>
-            <h2>Total: ${totalPrice}</h2>
-            <div className='buttons'>
-            {/* Checkout button *FOR FUTURE UPDATES* */}
-            <button>Checkout</button>
-            {/* Link for the cart page where is user can see his whole cart on the page. */}
-            <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
-            </div>
+              <h2>Total: ${totalPrice}</h2>
+              <div className='buttons'>
+                {/* Checkout button *FOR FUTURE UPDATES* */}
+                <button>Checkout</button>
+                {/* Link for the cart page where is user can see his whole cart on the page. */}
+                <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
+              </div>
             </div>
           </div> : <></>}
         </div>

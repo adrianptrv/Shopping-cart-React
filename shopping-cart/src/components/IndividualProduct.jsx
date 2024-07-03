@@ -1,6 +1,10 @@
 import { useState } from 'react'
-import { Route, Routes, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
+import "../styles/IndividualProduct.scss"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 function Shop({ handleAdding, products, id }) {
 
@@ -29,23 +33,28 @@ const handleChange = (e, i, act) => {
 
     return (
         <>
-            <h1>
-              LALALALA 64646464
-
-            </h1>
-
             <div>
-            {products && <div key={id}> <h1>{products.title}</h1>
-                <img src={products.image} width={100} height={100}></img>
+            {products && <div key={id} className='indWrapper'> 
+              <div className='imgHolder'> 
+                <img className='indProduct' src={products.image} width={100} height={100}></img>
+                </div>
+                <div className='indInfo'>
+                <h1>{products.title}</h1>
                 <p>{products.description}</p>
                 <h3>${products.price}</h3>
-                <p>{products.id}</p>
-                <input type='number' min={1} value={num[id]} onChange={(e) => {handleChange(e, id)}}></input>
-                <button onClick={() => {handleChange(null, id, "add")}}>Plus</button>
-                <button onClick={() => {handleChange(null, id, "sub")}}>Minus</button>
-                <button onClick={() => handleAdding(id, products.id, num[id], products.price)}>Add to cart</button>
+                <div className='indQuan'>
+                <p className='quanText'>Quantity:</p>
+                <button className='btnQuan' onClick={() => {handleChange(null, id, "sub")}}><FontAwesomeIcon icon={faMinus} /></button>
+                <input  type='number' min={1} value={num[id]} onChange={(e) => {handleChange(e, id)}}></input>
+                <button className='btnQuan' onClick={() => {handleChange(null, id, "add")}}><FontAwesomeIcon icon={faPlus} /></button>
+                </div>
+                <div className='indNav'>
+                <button  onClick={() => handleAdding(id, products.id, num[id], products.price)}>Add to cart</button>
+                <button><Link to="/cart">View Cart</Link></button>
                 <button><Link to="/shop">Back to Shop</Link></button>
-                <button><Link to="/cart">To Cart</Link></button>
+                </div>
+                </div>
+           
                 </div>}
                 
             </div>

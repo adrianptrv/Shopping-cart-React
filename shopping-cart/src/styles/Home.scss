@@ -1,0 +1,72 @@
+.homeBack {
+    height: 89.6dvh;
+    background-image: url(../assets/background.jpg);
+    background-size: 105% 115%;
+    background-position-x: 85%;
+    background-repeat: no-repeat;
+    text-align: center;
+
+    @media only screen and (max-width: 800px) {
+        background-image: url(../assets/background-mobile.jpg);
+        background-size: 175% 100%;
+        background-position-x: 52%;
+    }
+    @media only screen and (max-width: 550px) {
+        background-size: 250% 100%;
+    }
+
+    h1 {
+        font-size: 55px;
+        color: white;
+        position: relative;
+        top: 20%;
+        margin-top: 0;
+
+        @media only screen and (max-width: 1440px) {
+            font-size: 46px;
+        }
+        @media only screen and (max-width: 1024px) {
+            font-size: 38px;
+        }
+        @media only screen and (max-width: 800px) {
+            font-size: 36px;
+            top: 10%;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+    }
+
+    a {
+        position: relative;
+        top: 21%;
+
+        @media only screen and (max-width: 800px) {
+            top: 11%;
+        }
+    }
+
+
+    button {
+        font-size: 32px;
+        color: white;
+        background-color: #3F64C2;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 26px;
+
+        @media only screen and (max-width: 1440px) {
+            font-size: 26px;
+        }
+        @media only screen and (max-width: 1024px) {
+            font-size: 20px;
+        }
+        @media only screen and (max-width: 800px) {
+            font-size: 24px;
+        }
+
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

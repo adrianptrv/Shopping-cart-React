@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 import "../styles/Shop.scss"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 // Getting the callback for adding products to cart, and the porducts arry
-function Shop({ handleAdding, products }) {
+function Shop({ handleAdding, products, pageObj }) {
 
   //Quantity variable, used fo the quantity input field
   const [num, SetNum] = useState([1, 1, 1, 1, 1, 1])
@@ -36,11 +37,9 @@ function Shop({ handleAdding, products }) {
       <div className='productWrapper'>
         {/* Showing all of the fetched products by mapping the products array. We first check if the array is true. */}
         {products && products.map((product, i) => <div className='productBox' key={i}>
-          <img src={product.image} width={100} height={100}></img>
+        <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
           <h1>{product.title}</h1>
-          {/* <p>{product.description}</p> */}
           <h3>${product.price}</h3>
-          {/* <p>{product.id}</p> */}
           <div>
           <div className='quanWrap'>
           <button className='btnQuan' onClick={() => { handleChange(null, i, "sub") }}><FontAwesomeIcon icon={faMinus} /></button>
@@ -50,10 +49,6 @@ function Shop({ handleAdding, products }) {
           <button className='btnAdd' onClick={() => handleAdding(i, product.id, num[i], product.price)}>Add to cart</button>
           </div>
         </div>)}
-      </div>
-      <div>
-
-
       </div>
     </>
   )

@@ -149,7 +149,7 @@ function App() {
               </div>
             </div>)}
             <div className='totalAndButtons'>
-              <h2>Total: ${totalPrice}</h2>
+              <h2>Total: ${Math.trunc(totalPrice)}</h2>
               <div className='buttons'>
                 {/* Checkout button *FOR FUTURE UPDATES* */}
                 <button>Checkout</button>
@@ -166,7 +166,7 @@ function App() {
         <Routes>
           {/* Adding the three main pages */}
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} />} />
+          <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} pageObj={pageObj} />} />
           <Route path="/cart" element={<Cart handleQuan={handleQuantity} handleRem={handleRemove} addedItems={addedItems} totalCartPrice={totalPrice} pageObj={pageObj} />} />
           {/* Adding individual pages for the products. 
               1st - We check if the products variable has the results of the fetching

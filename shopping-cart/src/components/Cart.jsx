@@ -1,26 +1,35 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
+//Styles
+import "../styles/Cart.scss"
 
-
+//Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 function Cart({ handleQuan, handleRem, addedItems, totalCartPrice, pageObj }) {
 
   return (
     <>
-      {Array.from(addedItems).map((product, i) => <div key={i}> <h1>{product.title}</h1>
-        <img src={product.image} width={100} height={100}></img>
-        <p>{product.description}</p>
-        <h3>${product.price}</h3>
-        <p>{product.quantity}</p>
-        <button><Link to={pageObj[product.id]}>Go to page</Link></button>
-        <button onClick={() => handleQuan(i, "add", product.price)}>Add</button>
-        <button onClick={() => handleQuan(i, "sub", product.price)}>Substract</button>
-        <button onClick={() => handleRem(i, product.quantity, product.price)}>Remove</button>
+      {Array.from(addedItems).map((product, i) => <div className='cartObj' key={i}> 
+      <Link to={pageObj[product.id]}><img src={product.image} width={100} height={100}></img></Link>
+        <h2 className='prodTitle'>{product.title}</h2>
+        <h2 className='prodPrice'>${product.price}</h2>
+        <div className='cartQuan'>
+        <p className='quanText'>Quantity:</p>
+        <button onClick={() => handleQuan(i, "sub", product.price)}><FontAwesomeIcon icon={faMinus} /></button>
+        <p className='prodQuan'>{product.quantity}</p>
+        <button onClick={() => handleQuan(i, "add", product.price)}><FontAwesomeIcon icon={faPlus} /></button>
+        <button className='prodRmv' onClick={() => handleRem(i, product.quantity, product.price)}><FontAwesomeIcon icon={faTrashCan} /></button>
+        </div>
+       
       </div>)}
-      <h2>${totalCartPrice}</h2>
+      <div className='cartFooter'>
+      <h2>Total: ${Math.trunc(totalCartPrice)}</h2>
       <button>Proceed to Checkout</button>
       <button><Link to="/shop">Back to Shop</Link></button>
+      </div>
     </>
   )
 }

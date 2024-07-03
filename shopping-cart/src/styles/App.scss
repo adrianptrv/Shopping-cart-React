@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+[data-reactroot] { height: 100% }
 
 body {
     font-family: "Roboto", sans-serif;
@@ -17,6 +18,12 @@ body {
         position: absolute;
         top: 1px;
         left: 15px;
+
+        @media only screen and (max-width: 520px) {
+            width: 70px;
+            top: 13px;
+            left: 10px;
+        }
     }
 
     .linkPlusCart {
@@ -24,13 +31,25 @@ body {
         justify-content: center;
         width: 100%;
 
+        @media only screen and (max-width: 520px) {
+            width: 105%;
+        }
+
+        @media only screen and (max-width: 375px) {
+            width: 111%;
+        }
+
         .linkHome,
         .linkShop,
         .linkCart {
-            font-size: 25px;
+            font-size: 24px;
             margin-right: 15px;
             text-decoration: none;
             font-weight: 500;
+
+            @media only screen and (max-width: 520px) {
+                font-size: 20px;
+            }
         }
 
         .cartIcon {
@@ -43,21 +62,42 @@ body {
             &:hover {
                 cursor: pointer;
             }
+
+            @media only screen and (max-width: 520px) {
+                font-size: 25px;
+            }
         }
 
 
         .cartWrapper {
             position: absolute;
             background-color: #F1F1E6;
-            width: 35%;
+            width: 36%;
             top: 110px;
             right: 4.7%;
             border-radius: 10px;
             border-top-right-radius: 0;
             padding-top: 5px;
-
+            z-index: 1;
             box-shadow: -12px 12px 8px rgba(0, 0, 0, .12), 0 8px 8px rgba(0, 0, 0, .12), 0 4px 4px rgba(0, 0, 0, .12), -8px 8px 8px rgba(0, 0, 0, .12), -16px 16px 10px rgba(0, 0, 0, .12);
-            
+
+            @media only screen and (max-width: 1440px) {
+                width: 42%;
+            }
+
+            @media only screen and (max-width: 1280px) {
+                width: 50%;
+            }
+
+            @media only screen and (max-width: 860px) {
+                width: 75%;
+            }
+
+            @media only screen and (max-width: 500px) {
+                width: 90%;
+                box-shadow: 0px 20px 8px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12), 0px 14px 8px rgba(0, 0, 0, 0.12), 0px 12px 10px rgba(0, 0, 0, 0.12);
+            }
+
             .dropArrow {
                 width: 0;
                 height: 0;
@@ -78,14 +118,38 @@ body {
                 background-repeat: no-repeat;
                 background-image: linear-gradient(grey, grey);
 
+                @media only screen and (max-width: 1024px) {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
                 h3 {
-                    width: 45%;
-                    margin: 25px 0 0 20px;
+                    width: 30%;
+                    margin: 23px 0 15px 20px;
+
+                    @media only screen and (max-width: 1440px) {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                    }
+
+                    @media only screen and (max-width: 1024px) {
+                        margin: unset;
+                        width: 90%;
+                        text-align: center;
+                    }
+
                 }
 
                 a {
                     img {
                         margin: 15px 0 15px 23px;
+
+                        @media only screen and (max-width: 1024px) {
+                            margin: 15px 0 15px 0;
+                        }
                     }
                 }
 
@@ -93,6 +157,11 @@ body {
                     display: flex;
                     margin: auto;
                     margin-top: 17px;
+                    margin-right: 0;
+
+                    @media only screen and (max-width: 1024px) {
+                        margin: unset;
+                    }
 
                     h2 {
                         width: 2.3em;
@@ -105,6 +174,7 @@ body {
                     .quan-block {
                         display: flex;
                         align-items: center;
+                        margin-right: 0.8dvw;
 
                         p {
                             border-radius: 25px;
@@ -114,6 +184,7 @@ body {
                             border: 1px solid gray;
                             font-size: 20px;
                             line-height: 32px;
+                            background-color: white;
                         }
 
                         button {
@@ -134,12 +205,24 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+
                 h2 {
                     margin-left: 5%;
+
+                    @media only screen and (max-width: 500px) {
+                        font-size: 20px;
+                    }
+
+                    @media only screen and (max-width: 365px) {
+                        font-size: 18px;
+                        margin-bottom: 13px;
+                    }
                 }
+
                 .buttons {
-                    width: 29%;
-                   margin-right: 4.2%;
+                    display: flex;
+                    margin-right: 4.2%;
+
                     button {
                         font-size: 16px;
                         color: white;
@@ -148,21 +231,35 @@ body {
                         border-radius: 10px;
                         padding: 11px 11px;
                         height: 37px;
-            
+
+                        @media only screen and (max-width: 500px) {
+                            font-size: 14px;
+                            padding: 7px 11px;
+                            height: 30px;
+                        }
+
+                        @media only screen and (max-width: 365px) {
+                            font-size: 12px;
+                        }
+
                         &:hover {
                             cursor: pointer;
                         }
 
                         &:nth-of-type(1) {
-                          margin-right: 5%;
+                            margin-right: 5%;
                         }
-    
+
+                        &:nth-of-type(2) {
+                            width: 105px;
+                        }
+
                         a {
                             text-decoration: none;
                         }
                     }
                 }
-                
+
             }
         }
 

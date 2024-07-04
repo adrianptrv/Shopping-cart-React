@@ -146,6 +146,7 @@ body {
                 a {
                     img {
                         margin: 15px 0 15px 23px;
+                        mix-blend-mode: darken;
 
                         @media only screen and (max-width: 1024px) {
                             margin: 15px 0 15px 0;

@@ -1,10 +1,16 @@
+
 .homeBack {
-    height: 90.7vh;
+    height: 100%;
     background-image: url(../assets/background.jpg);
     background-size: 105% 115%;
     background-position-x: 85%;
     background-repeat: no-repeat;
     text-align: center;
+
+    // Make img in one place and full res 
+    position: fixed;
+    left: 0;
+    right: 0;
 
     @media only screen and (max-width: 800px) {
         background-image: url(../assets/background-mobile.jpg);

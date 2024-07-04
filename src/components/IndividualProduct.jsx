@@ -50,8 +50,8 @@ const handleChange = (e, i, act) => {
                 </div>
                 <div className='indNav'>
                 <button  onClick={() => handleAdding(id, products.id, num[id], products.price)}>Add to cart</button>
-                <button><Link to="/cart">View Cart</Link></button>
-                <button><Link to="/shop">Back to Shop</Link></button>
+                <button><Link to="/Shopping-cart-React/cart">View Cart</Link></button>
+                <button><Link to="/Shopping-cart-React/shop">Back to Shop</Link></button>
                 </div>
                 </div>
            

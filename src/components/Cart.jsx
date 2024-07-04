@@ -28,7 +28,7 @@ function Cart({ handleQuan, handleRem, addedItems, totalCartPrice, pageObj }) {
       <div className='cartFooter'>
       <h2>Total: ${Math.trunc(totalCartPrice)}</h2>
       <button>Proceed to Checkout</button>
-      <button><Link to="/shop">Back to Shop</Link></button>
+      <button><Link to="/Shopping-cart-React/shop">Back to Shop</Link></button>
       </div>
     </>
   )

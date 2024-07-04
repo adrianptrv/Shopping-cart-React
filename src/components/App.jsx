@@ -31,12 +31,12 @@ function App() {
 
   // Object holding the individual product link, so we can make the items from our cart lead to the individual product pages
   const pageObj = {
-    9: "/shop/wd-2tb",
-    10: "/shop/ssd-1tb",
-    11: "/shop/ssd-256gb",
-    12: "/shop/wd-4tb",
-    13: "/shop/acer-21.5inch",
-    14: "/shop/Samsung-49inch"
+    9: "/Shopping-cart-React/shop/wd-2tb",
+    10: "/Shopping-cart-React/shop/ssd-1tb",
+    11: "/Shopping-cart-React/shop/ssd-256gb",
+    12: "/Shopping-cart-React/shop/wd-4tb",
+    13: "/Shopping-cart-React/shop/acer-21.5inch",
+    14: "/Shopping-cart-React/shop/Samsung-49inch"
   }
 
   // Fetching products data and assingning it to the products variable.
@@ -124,9 +124,9 @@ function App() {
         <img className='headerLogo' src={reactImg}></img>
         <div className='linkPlusCart'>
           {/* Links to the three main pages + cart Icon */}
-          <Link className='linkHome' to="/">Home</Link>
-          <Link className='linkShop' to="/shop">Shop</Link>
-          <Link className='linkCart' to="/cart">Cart</Link>
+          <Link className='linkHome' to="/Shopping-cart-React/">Home</Link>
+          <Link className='linkShop' to="/Shopping-cart-React/shop">Shop</Link>
+          <Link className='linkCart' to="/Shopping-cart-React/cart">Cart</Link>
           <p className='cartIcon' onClick={handleCart}><FontAwesomeIcon icon={faCartShopping} /></p>
           {/* Cart code. 
               1st - We check if the cart should be showing or not.
@@ -154,7 +154,7 @@ function App() {
                 {/* Checkout button *FOR FUTURE UPDATES* */}
                 <button>Checkout</button>
                 {/* Link for the cart page where is user can see his whole cart on the page. */}
-                <button onClick={handleCart}><Link to="/cart">View Cart</Link></button>
+                <button onClick={handleCart}><Link to="/Shopping-cart-React/cart">View Cart</Link></button>
               </div>
             </div>
           </div> : <></>}
@@ -165,9 +165,9 @@ function App() {
       <div>
         <Routes>
           {/* Adding the three main pages */}
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop handleAdding={handleAdd} products={products} pageObj={pageObj} />} />
-          <Route path="/cart" element={<Cart handleQuan={handleQuantity} handleRem={handleRemove} addedItems={addedItems} totalCartPrice={totalPrice} pageObj={pageObj} />} />
+          <Route path="/Shopping-cart-React/" element={<Home />} />
+          <Route path="/Shopping-cart-React/shop" element={<Shop handleAdding={handleAdd} products={products} pageObj={pageObj} />} />
+          <Route path="/Shopping-cart-React/cart" element={<Cart handleQuan={handleQuantity} handleRem={handleRemove} addedItems={addedItems} totalCartPrice={totalPrice} pageObj={pageObj} />} />
           {/* Adding individual pages for the products. 
               1st - We check if the products variable has the results of the fetching
               2nd - We write the Route component for every product. 
@@ -175,12 +175,12 @@ function App() {
                - Only the specific product information, based on their place in the result array - "products"
                - And the id/position of the product in the result array - "products"*/}
           {products && <>
-            <Route path="/shop/wd-2tb" element={<IndividualProduct handleAdding={handleAdd} products={products[0]} id={0} />} />
-            <Route path="/shop/ssd-1tb" element={<IndividualProduct handleAdding={handleAdd} products={products[1]} id={1} />} />
-            <Route path="/shop/ssd-256gb" element={<IndividualProduct handleAdding={handleAdd} products={products[2]} id={2} />} />
-            <Route path="/shop/wd-4tb" element={<IndividualProduct handleAdding={handleAdd} products={products[3]} id={3} />} />
-            <Route path="/shop/acer-21.5inch" element={<IndividualProduct handleAdding={handleAdd} products={products[4]} id={4} />} />
-            <Route path="/shop/Samsung-49inch" element={<IndividualProduct handleAdding={handleAdd} products={products[5]} id={5} />} />
+            <Route path="/Shopping-cart-React/shop/wd-2tb" element={<IndividualProduct handleAdding={handleAdd} products={products[0]} id={0} />} />
+            <Route path="/Shopping-cart-React/shop/ssd-1tb" element={<IndividualProduct handleAdding={handleAdd} products={products[1]} id={1} />} />
+            <Route path="/Shopping-cart-React/shop/ssd-256gb" element={<IndividualProduct handleAdding={handleAdd} products={products[2]} id={2} />} />
+            <Route path="/Shopping-cart-React/shop/wd-4tb" element={<IndividualProduct handleAdding={handleAdd} products={products[3]} id={3} />} />
+            <Route path="/Shopping-cart-React/shop/acer-21.5inch" element={<IndividualProduct handleAdding={handleAdd} products={products[4]} id={4} />} />
+            <Route path="/Shopping-cart-React/shop/Samsung-49inch" element={<IndividualProduct handleAdding={handleAdd} products={products[5]} id={5} />} />
           </>
           }
         </Routes>

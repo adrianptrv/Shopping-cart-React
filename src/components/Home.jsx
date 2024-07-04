@@ -12,7 +12,7 @@ function Home() {
         <h1>
           Welcome to our PC hardware store!
         </h1>
-        <Link to="/shop"><button className='homeShop'>Shop now</button></Link>
+        <Link to="/Shopping-cart-React/shop"><button className='homeShop'>Shop now</button></Link>
       </div>
     </>
   )

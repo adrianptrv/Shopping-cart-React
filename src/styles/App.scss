@@ -12,6 +12,11 @@ body {
     background-color: #3F64C2;
     padding: 35px 35px;
 
+    @media only screen and (max-width: 800px) {
+       position: relative;
+       z-index: 10;
+    }
+
     .headerLogo {
         width: 100px;
         height: auto;
@@ -80,6 +85,8 @@ body {
             padding-top: 5px;
             z-index: 1;
             box-shadow: -12px 12px 8px rgba(0, 0, 0, .12), 0 8px 8px rgba(0, 0, 0, .12), 0 4px 4px rgba(0, 0, 0, .12), -8px 8px 8px rgba(0, 0, 0, .12), -16px 16px 10px rgba(0, 0, 0, .12);
+
+
 
             @media only screen and (max-width: 1440px) {
                 width: 42%;

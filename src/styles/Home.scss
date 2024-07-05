@@ -16,9 +16,10 @@
         background-image: url(../assets/background-mobile.jpg);
         background-size: 175% 100%;
         background-position-x: 52%;
+        top: 0;
     }
     @media only screen and (max-width: 550px) {
-        background-size: 250% 100%;
+        background-size: 268% 113%;
     }
 
     h1 {
@@ -36,7 +37,7 @@
         }
         @media only screen and (max-width: 800px) {
             font-size: 36px;
-            top: 10%;
+            top: 21%;
             margin-left: 40px;
             margin-right: 40px;
         }
@@ -47,7 +48,7 @@
         top: 21%;
 
         @media only screen and (max-width: 800px) {
-            top: 11%;
+            top: 22%;
         }
     }
 
